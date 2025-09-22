@@ -1,8 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { requireAuth } from '@/lib/auth'
-import { writeFile, mkdir } from 'fs/promises'
-import { join } from 'path'
+import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3'
 import { randomUUID } from 'crypto'
+
+// Configure R2 client
+const r2Client = new S3Client({
+  region: 'auto',
+  endpoint: process.env.R2_ENDPOINT,
+  credentials: {
+    accessKeyId: process.env.R2_ACCESS_KEY_ID!,
+    secretAccessKey: process.env.R2_SECRET_ACCESS_KEY!,
+  },
+})
 
 export async function POST(request: NextRequest) {
   try {
@@ -27,26 +36,25 @@ export async function POST(request: NextRequest) {
 
     // Generate unique filename
     const fileExtension = file.name.split('.').pop() || 'jpg'
-    const fileName = `${randomUUID()}.${fileExtension}`
+    const fileName = `logos/${randomUUID()}.${fileExtension}`
 
-    // Create uploads directory if it doesn't exist
-    const uploadDir = join(process.cwd(), 'public', 'uploads')
-
-    try {
-      await mkdir(uploadDir, { recursive: true })
-    } catch (error) {
-      // Directory might already exist, ignore error
-    }
-
-    // Convert file to buffer and save
+    // Convert file to buffer
     const bytes = await file.arrayBuffer()
     const buffer = Buffer.from(bytes)
 
-    const filePath = join(uploadDir, fileName)
-    await writeFile(filePath, buffer)
+    // Upload to R2
+    const uploadCommand = new PutObjectCommand({
+      Bucket: process.env.R2_BUCKET_NAME!,
+      Key: fileName,
+      Body: buffer,
+      ContentType: file.type,
+      ContentLength: buffer.length,
+    })
 
-    // Return the URL path for the uploaded file
-    const fileUrl = `/uploads/${fileName}`
+    await r2Client.send(uploadCommand)
+
+    // Return the public URL
+    const fileUrl = `${process.env.R2_PUBLIC_URL}/${fileName}`
 
     return NextResponse.json({ fileUrl }, { status: 200 })
   } catch (error) {
