@@ -261,20 +261,6 @@ export default function HomePage() {
           )}
 
 
-          {/* Powered by Fizzle */}
-          <div className="flex items-center justify-center gap-2 mt-6 pt-4">
-            <span className="text-xs text-muted-foreground">Presented by:</span>
-            <a href="https://www.example.com/?utm_source=nycstartupjobs" target="_blank" rel="noopener noreferrer">
-              <Image
-                src="/company.png"
-                alt="Fizzle"
-                width={64}
-                height={64}
-                className="h-16 w-auto hover:opacity-100 transition-opacity rounded-lg"
-                loading="lazy"
-              />
-            </a>
-          </div>
         </div>
       </section>
 
