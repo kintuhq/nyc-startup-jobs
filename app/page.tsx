@@ -263,7 +263,7 @@ export default function HomePage() {
 
           {/* Powered by Fizzle */}
           <div className="flex items-center justify-center gap-2 mt-6 pt-4">
-            <span className="text-xs text-muted-foreground">Sponsor:</span>
+            <span className="text-xs text-muted-foreground">Presented by:</span>
             <a href="https://www.example.com/?utm_source=nycstartupjobs" target="_blank" rel="noopener noreferrer">
               <Image
                 src="/company.png"

@@ -125,7 +125,7 @@ NEXT_PUBLIC_BASE_URL=https://nycstartupjobs.com
 ```bash
 # Clone and install dependencies
 git clone <repository>
-cd math-jobs
+cd nyc-startup-jobs
 npm install
 
 # Generate and push database schema

@@ -35,10 +35,10 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
     const { name, email, subject, message } = contactSchema.parse(body)
 
-    // Send email to team@mathjobs.xyz
+    // Send email to team@nycstartupjobs.com
     await resend.emails.send({
       from: process.env.EMAIL_FROM_ADDRESS!,
-      to: 'team@mathjobs.xyz',
+      to: 'team@nycstartupjobs.com',
       subject: `Contact Form: ${subject}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -57,7 +57,7 @@ export async function POST(request: NextRequest) {
 
           <div style="margin-top: 20px; padding: 15px; background: #e8f4f8; border-radius: 8px;">
             <p style="margin: 0; font-size: 14px; color: #666;">
-              This message was sent from the Math Jobs contact form. Reply directly to this email to respond to ${escapeHtml(name)} at ${escapeHtml(email)}.
+              This message was sent from the NYC Startup Jobs contact form. Reply directly to this email to respond to ${escapeHtml(name)} at ${escapeHtml(email)}.
             </p>
           </div>
         </div>

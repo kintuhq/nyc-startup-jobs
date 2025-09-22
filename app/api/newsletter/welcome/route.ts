@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
     const { name, email } = welcomeSchema.parse(body)
 
-    await sendNewsletterWelcomeEmail(email, name || 'Math Educator')
+    await sendNewsletterWelcomeEmail(email, name || 'Professional')
 
     return NextResponse.json({ success: true })
   } catch (error) {

@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
     // Schedule welcome email to be sent 1 hour after successful verification
     try {
       const protocol = request.headers.get('x-forwarded-proto') || 'https'
-      const host = request.headers.get('host') || 'mathjobs.xyz'
+      const host = request.headers.get('host') || 'nycstartupjobs.com'
       const baseUrl = `${protocol}://${host}`
 
       setTimeout(async () => {

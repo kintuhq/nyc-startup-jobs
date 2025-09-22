@@ -86,7 +86,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      message: 'Thank you for subscribing! You will receive notifications about new math teaching positions.',
+      message: 'Thank you for subscribing! You will receive notifications about new job positions.',
       subscriber: {
         id: subscriber.id,
         name: subscriber.name,
