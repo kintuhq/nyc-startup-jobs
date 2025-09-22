@@ -8,6 +8,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { MapPin, Mail, Bell } from "lucide-react"
 import { Input } from "@/components/ui/input"
+import Header from "@/components/layout/Header"
+import Footer from "@/components/layout/Footer"
 
 interface Job {
   id: string
@@ -40,7 +42,11 @@ export default function HomePage() {
     try {
       // Add cache-friendly fetch with stale-while-revalidate
       const response = await fetch("/api/jobs?limit=20", {
-        next: { revalidate: 60 } // Revalidate every 1 minute
+        next: {
+          revalidate: 60, // Revalidate every 1 minute
+          tags: ['jobs'] // Tag for on-demand revalidation
+        },
+        cache: 'force-cache' // Use cached data when available
       })
       if (response.ok) {
         const jobsData = await response.json()
@@ -84,35 +90,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b border-border bg-card">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <Image
-                src="/logo.png"
-                alt="NYC Startup Jobs logo"
-                width={56}
-                height={56}
-                className="h-14 w-14 mr-2"
-                priority
-              />
-              <div>
-                <h1 className="text-2xl font-bold">
-                  <span className="text-primary">NYC Startup Jobs</span>
-                </h1>
-                <p className="text-muted-foreground -mt-1 text-sm">Building NYC startups</p>
-              </div>
-            </div>
-            <Button
-              onClick={() => router.push("/register")}
-              className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-base font-semibold text-primary-foreground bg-gradient-to-r from-primary to-primary/90 rounded-lg shadow-md hover:shadow-lg hover:brightness-110 transition-all duration-300 px-6 py-3 h-11 cursor-pointer"
-            >
-              Post a Job
-            </Button>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Hero Section */}
       <section className="py-16 px-4">
@@ -133,7 +111,7 @@ export default function HomePage() {
                 width: '100%',
                 maxWidth: '400px',
                 border: '3px solid transparent',
-                backgroundImage: 'linear-gradient(white, white), linear-gradient(45deg, #8a6bb1, #654597)',
+                backgroundImage: 'linear-gradient(white, white), linear-gradient(45deg, #6b46a3, #4c1d95)',
                 backgroundOrigin: 'border-box',
                 backgroundClip: 'content-box, border-box',
                 display: 'flex',
@@ -166,7 +144,7 @@ export default function HomePage() {
                     style={{
                       width: '96px',
                       height: '100%',
-                      background: 'linear-gradient(45deg, #654597, #8a6bb1)',
+                      background: 'linear-gradient(45deg, #4c1d95, #6b46a3)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -230,7 +208,7 @@ export default function HomePage() {
                     style={{
                       width: '96px',
                       height: '100%',
-                      background: 'linear-gradient(45deg, #654597, #8a6bb1)',
+                      background: 'linear-gradient(45deg, #4c1d95, #6b46a3)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -309,6 +287,8 @@ export default function HomePage() {
                           height={48}
                           className="w-full h-full object-cover"
                           loading="lazy"
+                          placeholder="blur"
+                          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyatceZQa+ttom+rQBOREiKWv8AtZhg5Wx8U8XyR2sQ0MXgp4KjQ0sF9vZFZn0IDMCEByWa6hm7fmUHZl1ht2pHPLRpq8n/2Q=="
                           unoptimized={job.company.logo?.startsWith('http')}
                         />
                       </div>
@@ -336,9 +316,6 @@ export default function HomePage() {
                         </Badge>
                       </div>
 
-                      <p className="text-sm text-muted-foreground line-clamp-2">
-                        {job.company.name} is hiring a {job.title} in {job.location}.
-                      </p>
 
                       <Button
                         className="w-full bg-primary hover:bg-primary/90 text-primary-foreground cursor-pointer"
@@ -363,116 +340,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Professional Footer */}
-      <footer className="bg-card border-t border-border mt-16">
-        <div className="mx-auto px-4 py-12" style={{ maxWidth: "1240px" }}>
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
-            {/* Brand Section */}
-            <div className="md:col-span-2">
-              <div className="flex items-center mb-3">
-                <Image
-                  src="/logo.png"
-                  alt="NYC Startup Jobs Logo"
-                  width={32}
-                  height={32}
-                  className="h-8 w-8 mr-2"
-                  loading="lazy"
-                />
-                <h3 className="text-2xl font-bold text-foreground">
-                  NYC Startup <span className="text-primary">Jobs</span>
-                </h3>
-              </div>
-              <p className="text-muted-foreground mb-4 max-w-md">
-                Helping NYC's startup ecosystem thrive by connecting skilled professionals with the city's most promising startups.
-              </p>
-            </div>
-
-            {/* Quick Links */}
-            <div>
-              <h4 className="font-semibold text-foreground mb-3">For Analysts</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>
-                  <a href="#" className="hover:text-primary transition-colors">
-                    Browse Jobs
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-primary transition-colors">
-                    Career Resources
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-primary transition-colors">
-                    Data Analysis Tips
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            {/* For Schools */}
-            <div>
-              <h4 className="font-semibold text-foreground mb-3">For Companies</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>
-                  <a href="/login" className="hover:text-primary transition-colors">
-                    Login
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-primary transition-colors">
-                    Hiring Guide
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-primary transition-colors">
-                    Success Stories
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            {/* Connect With Us */}
-            <div>
-              <h4 className="font-semibold text-foreground mb-3">Connect With Us</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>
-                  <a href="#" className="hover:text-primary transition-colors">
-                    LinkedIn
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-primary transition-colors">
-                    Facebook
-                  </a>
-                </li>
-                <li>
-                  <a href="/contact" className="hover:text-primary transition-colors">
-                    Contact Us
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Bottom Section */}
-          <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <div className="text-sm text-muted-foreground mb-4 md:mb-0">
-              © 2025 NYC Startup Jobs.
-            </div>
-            <div className="flex items-center gap-6 text-sm text-muted-foreground">
-              <a href="#" className="hover:text-primary transition-colors">
-                Privacy Policy
-              </a>
-              <a href="#" className="hover:text-primary transition-colors">
-                Terms of Service
-              </a>
-              <a href="#" className="hover:text-primary transition-colors">
-                Contact Us
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }

@@ -3,10 +3,13 @@
 import { useState, useEffect } from "react"
 import { useParams, useRouter } from "next/navigation"
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ArrowLeft, MapPin, Calendar, Building2, FileText, Info, Mail, ExternalLink } from "lucide-react"
+import JobHeader from "@/components/layout/JobHeader"
+import Footer from "@/components/layout/Footer"
 
 interface Job {
   id: string
@@ -42,7 +45,13 @@ export default function JobDetailPage() {
 
   const fetchJob = async () => {
     try {
-      const response = await fetch(`/api/jobs/${params.id}`)
+      const response = await fetch(`/api/jobs/${params.id}`, {
+        next: {
+          revalidate: 300, // Revalidate every 5 minutes for job details
+          tags: ['job', `job-${params.id}`] // Tag for on-demand revalidation
+        },
+        cache: 'force-cache' // Use cached data when available
+      })
       if (response.ok) {
         const jobData = await response.json()
         setJob(jobData)
@@ -94,37 +103,7 @@ export default function JobDetailPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b border-border bg-card">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <img
-                src="/logo.png"
-                alt="NYC Startup Jobs logo"
-                className="h-14 w-14 mr-2"
-              />
-              <div>
-                <a href="/" className="cursor-pointer">
-                  <h1 className="text-2xl font-bold">
-                    <span className="text-black">NYC Startup</span> <span className="text-primary">Jobs</span>
-                  </h1>
-                </a>
-                <p className="text-muted-foreground -mt-1 text-sm">Building NYC startups</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4">
-              <Link
-                href="/"
-                className="inline-flex items-center text-sm text-muted-foreground hover:text-orange-400 transition-colors cursor-pointer"
-              >
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Back to Jobs
-              </Link>
-            </div>
-          </div>
-        </div>
-      </header>
+      <JobHeader />
 
       <div className="max-w-[800px] mx-auto px-6 py-12">
         {/* Single unified container */}
@@ -134,10 +113,16 @@ export default function JobDetailPage() {
             <div className="flex items-start gap-6 mb-6">
               <div className="flex flex-col items-center">
                 {job.company.logo && (
-                  <img
+                  <Image
                     src={job.company.logo}
                     alt={`${job.company.name} logo`}
+                    width={80}
+                    height={80}
                     className="w-20 h-20 rounded-xl object-cover border border-border mb-3"
+                    loading="lazy"
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyatceZQa+ttom+rQBOREiKWv8AtZhg5Wx8U8XyR2sQ0MXgp4KjQ0sF9vZFZn0IDMCEByWa6hm7fmUHZl1ht2pHPLRpq8n/2Q=="
+                    unoptimized={job.company.logo?.startsWith('http')}
                   />
                 )}
                 <Badge
@@ -213,14 +198,14 @@ export default function JobDetailPage() {
                     const url = urlMatch[0].startsWith('www') ? `https://${urlMatch[0]}` : urlMatch[0];
                     if (line.startsWith('Form: ')) {
                       return (
-                        <div key={index}>
-                          Form: <a href={url} target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-700 underline">{url}</a>
+                        <div key={index} className="break-words">
+                          Form: <a href={url} target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-700 underline break-all">{url}</a>
                         </div>
                       );
                     } else {
                       return (
-                        <div key={index}>
-                          <a href={url} target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-700 underline">{line}</a>
+                        <div key={index} className="break-words">
+                          <a href={url} target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-700 underline break-all">{line}</a>
                         </div>
                       );
                     }
@@ -265,113 +250,7 @@ export default function JobDetailPage() {
         </div>
       </div>
 
-      {/* Professional Footer */}
-      <footer className="bg-card border-t border-border mt-16">
-        <div className="mx-auto px-4 py-12" style={{ maxWidth: "1240px" }}>
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
-            {/* Brand Section */}
-            <div className="md:col-span-2">
-              <div className="flex items-center mb-3">
-                <img
-                  src="/logo.png"
-                  alt="NYC Startup Jobs Logo"
-                  className="h-8 w-8 mr-2"
-                />
-                <h3 className="text-2xl font-bold text-foreground">
-                  NYC Startup <span className="text-primary">Jobs</span>
-                </h3>
-              </div>
-              <p className="text-muted-foreground mb-4 max-w-md">
-                Helping NYC's startup ecosystem thrive by connecting skilled professionals with the city's most promising startups.
-              </p>
-            </div>
-
-            {/* Quick Links */}
-            <div>
-              <h4 className="font-semibold text-foreground mb-3">For Teachers</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>
-                  <a href="/" className="hover:text-primary transition-colors">
-                    Browse Jobs
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-primary transition-colors">
-                    Career Resources
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-primary transition-colors">
-                    Teaching Tips
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            {/* For Companies */}
-            <div>
-              <h4 className="font-semibold text-foreground mb-3">For Companies</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>
-                  <a href="/dashboard" className="hover:text-primary transition-colors">
-                    Dashboard
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-primary transition-colors">
-                    Hiring Guide
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-primary transition-colors">
-                    Success Stories
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            {/* Connect With Us */}
-            <div>
-              <h4 className="font-semibold text-foreground mb-3">Connect With Us</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>
-                  <a href="#" className="hover:text-primary transition-colors">
-                    LinkedIn
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-primary transition-colors">
-                    Facebook
-                  </a>
-                </li>
-                <li>
-                  <a href="/contact" className="hover:text-primary transition-colors">
-                    Contact Us
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Bottom Section */}
-          <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <div className="text-sm text-muted-foreground mb-4 md:mb-0">
-              © 2025 NYC Startup Jobs.
-            </div>
-            <div className="flex items-center gap-6 text-sm text-muted-foreground">
-              <a href="#" className="hover:text-primary transition-colors">
-                Privacy Policy
-              </a>
-              <a href="#" className="hover:text-primary transition-colors">
-                Terms of Service
-              </a>
-              <a href="/contact" className="hover:text-primary transition-colors">
-                Contact Us
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }

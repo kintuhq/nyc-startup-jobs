@@ -15,9 +15,9 @@ export default function Header() {
             <Image
               src="/logo.png"
               alt="NYC Startup Jobs logo"
-              width={56}
-              height={56}
-              className="h-14 w-14 mr-2"
+              width={72}
+              height={72}
+              className="h-[72px] w-[72px] mr-2"
               priority
             />
             <div>
