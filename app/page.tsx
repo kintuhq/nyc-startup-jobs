@@ -133,7 +133,7 @@ export default function HomePage() {
                 width: '100%',
                 maxWidth: '400px',
                 border: '3px solid transparent',
-                backgroundImage: 'linear-gradient(white, white), linear-gradient(45deg, #654597, #8a6bb1)',
+                backgroundImage: 'linear-gradient(white, white), linear-gradient(45deg, #8a6bb1, #654597)',
                 backgroundOrigin: 'border-box',
                 backgroundClip: 'content-box, border-box',
                 display: 'flex',
