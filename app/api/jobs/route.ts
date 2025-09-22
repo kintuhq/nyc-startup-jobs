@@ -9,8 +9,9 @@ import { generateShortId } from '@/lib/short-id'
 
 const jobSchema = z.object({
   title: z.string().min(1),
-  location: z.string().min(1),
+  location: z.enum(['Manhattan', 'Brooklyn', 'Queens', 'The Bronx', 'Staten Island']),
   type: z.enum(['full-time', 'part-time', 'contractor']),
+  role: z.string().optional(),
   shortBio: z.string().min(1),
   jobSpec: z.string().min(1),
   aboutCompany: z.string().min(1),
@@ -35,6 +36,7 @@ export async function GET(request: NextRequest) {
         title: jobs.title,
         location: jobs.location,
         type: jobs.type,
+        role: jobs.role,
         createdAt: jobs.createdAt,
         company: {
           id: jobs.companyId,

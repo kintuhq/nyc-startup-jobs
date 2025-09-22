@@ -11,11 +11,64 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { X, Upload, Check } from "lucide-react"
 
+const JOB_ROLES = {
+  "Engineering & Technical": [
+    "Software Engineer (Frontend, Backend, Full Stack)",
+    "Mobile Engineer (iOS, Android)",
+    "DevOps / Infrastructure Engineer",
+    "Data Scientist / Data Engineer",
+    "Machine Learning Engineer",
+    "QA / Test Engineer",
+    "Security Engineer"
+  ],
+  "Product & Design": [
+    "Product Manager",
+    "Product Designer (UX/UI)",
+    "UX Researcher",
+    "Graphic / Visual Designer",
+    "Brand Designer"
+  ],
+  "Leadership & Management": [
+    "Founder / CEO",
+    "COO / Operations Manager",
+    "CFO / Finance Manager",
+    "CTO / Head of Engineering",
+    "Head of Product",
+    "Head of Design"
+  ],
+  "Marketing & Growth": [
+    "Growth Marketer / Growth Hacker",
+    "Content Marketer / Copywriter",
+    "Performance / SEO Marketer",
+    "Social Media Manager",
+    "Community Manager"
+  ],
+  "Sales & Business": [
+    "Business Development Manager",
+    "Sales Lead / Account Executive",
+    "Partnerships Manager",
+    "Account Manager"
+  ],
+  "Customer & People": [
+    "Customer Success Manager",
+    "Customer Support Specialist",
+    "HR / People Operations",
+    "Recruiter / Talent Acquisition"
+  ],
+  "Other / Specialist Roles": [
+    "Legal / Compliance",
+    "Finance / Accounting",
+    "Operations Associate",
+    "Executive Assistant"
+  ]
+}
+
 interface Job {
   id: string
   title: string
   location: string
   type: string
+  role?: string
   jobSpec: string
   aboutCompany: string
   howToApply: string
@@ -36,9 +89,9 @@ interface JobPostingFormProps {
 export default function JobPostingForm({ onSubmit, onClose, editingJob, isModal = true }: JobPostingFormProps) {
   const [formData, setFormData] = useState({
     title: "",
-    country: "",
-    city: "",
+    borough: "",
     type: "",
+    role: "",
     jobSpec: "",
     aboutCompany: "",
     applicationEmail: "",
@@ -92,20 +145,19 @@ export default function JobPostingForm({ onSubmit, onClose, editingJob, isModal 
 
   useEffect(() => {
     if (editingJob) {
-      // Parse existing location
-      // Handle formats like "Berlin, Germany" or just "Berlin"
-      const locationParts = editingJob.location.split(', ')
-      let country = ""
-      let city = ""
+      // Parse existing location to find NYC borough
+      const location = editingJob.location
+      let borough = ""
 
-      if (locationParts.length > 1) {
-        // Format: "City, Country" or "City, State, Country"
-        country = locationParts[locationParts.length - 1]
-        city = locationParts.slice(0, -1).join(', ')
+      // Check if location contains any NYC borough name
+      const boroughs = ["Manhattan", "Brooklyn", "Queens", "The Bronx", "Staten Island"]
+      const foundBorough = boroughs.find(b => location.includes(b))
+
+      if (foundBorough) {
+        borough = foundBorough
       } else {
-        // Format: just "City" - put it in city field, leave country empty
-        city = locationParts[0] || ""
-        country = ""
+        // Default to Manhattan if no specific borough is found
+        borough = "Manhattan"
       }
 
       // Parse howToApply field to extract email and form URL
@@ -131,9 +183,9 @@ export default function JobPostingForm({ onSubmit, onClose, editingJob, isModal 
 
       const newFormData = {
         title: editingJob.title,
-        country: country,
-        city: city,
+        borough: borough,
         type: editingJob.type,
+        role: editingJob.role || "",
         jobSpec: editingJob.jobSpec,
         aboutCompany: editingJob.aboutCompany,
         applicationEmail: applicationEmail,
@@ -142,8 +194,7 @@ export default function JobPostingForm({ onSubmit, onClose, editingJob, isModal 
 
       console.log('Loading job data for editing:', {
         originalLocation: editingJob.location,
-        parsedCity: city,
-        parsedCountry: country,
+        parsedBorough: borough,
         type: editingJob.type,
         formData: newFormData
       })
@@ -169,7 +220,7 @@ export default function JobPostingForm({ onSubmit, onClose, editingJob, isModal 
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    const location = formData.city && formData.country ? `${formData.city}, ${formData.country}` : formData.city || formData.country
+    const location = formData.borough
 
     // Require at least one application method
     const hasApplicationMethod = formData.applicationEmail || formData.applicationFormUrl
@@ -211,15 +262,20 @@ export default function JobPostingForm({ onSubmit, onClose, editingJob, isModal 
         submitData.type = formData.type
       }
 
+      // Only include role if it's not empty
+      if (formData.role) {
+        submitData.role = formData.role
+      }
+
       console.log('Submitting job data:', submitData)
       onSubmit(submitData)
 
       if (!editingJob) {
         setFormData({
           title: "",
-          country: "",
-          city: "",
+          borough: "",
           type: "",
+          role: "",
           jobSpec: "",
           aboutCompany: "",
           applicationEmail: "",
@@ -230,7 +286,7 @@ export default function JobPostingForm({ onSubmit, onClose, editingJob, isModal 
       // Show validation error
       const missingFields = []
       if (!formData.title) missingFields.push('Job Title')
-      if (!location) missingFields.push('Location (Country/City)')
+      if (!location) missingFields.push('NYC Borough')
       if (!formData.jobSpec) missingFields.push('Job Specification')
       if (!hasApplicationMethod) missingFields.push('Application Method (Email or Form URL)')
       if (!logoState.currentLogo) missingFields.push('Company Logo')
@@ -444,116 +500,44 @@ export default function JobPostingForm({ onSubmit, onClose, editingJob, isModal 
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="country" className="text-xl font-semibold">Country *</Label>
-              <p className="text-sm text-gray-400 -mt-1 mb-2">Select the country where the position is located</p>
-              <Select key={`country-${formData.country}-${isFormDataLoaded}`} value={formData.country} onValueChange={(value) => handleChange("country", value)}>
+              <Label htmlFor="role" className="text-xl font-semibold">Job Role</Label>
+              <p className="text-sm text-gray-400 -mt-1 mb-2">Select the role that best describes this position</p>
+              <Select key={`role-${formData.role}-${isFormDataLoaded}`} value={formData.role} onValueChange={(value) => handleChange("role", value)}>
                 <SelectTrigger className="bg-white border-gray-300 text-gray-900">
-                  <SelectValue placeholder="Select country" />
+                  <SelectValue placeholder="Select job role" />
                 </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="Afghanistan">Afghanistan</SelectItem>
-                  <SelectItem value="Albania">Albania</SelectItem>
-                  <SelectItem value="Algeria">Algeria</SelectItem>
-                  <SelectItem value="Argentina">Argentina</SelectItem>
-                  <SelectItem value="Armenia">Armenia</SelectItem>
-                  <SelectItem value="Australia">Australia</SelectItem>
-                  <SelectItem value="Austria">Austria</SelectItem>
-                  <SelectItem value="Azerbaijan">Azerbaijan</SelectItem>
-                  <SelectItem value="Bahrain">Bahrain</SelectItem>
-                  <SelectItem value="Bangladesh">Bangladesh</SelectItem>
-                  <SelectItem value="Belarus">Belarus</SelectItem>
-                  <SelectItem value="Belgium">Belgium</SelectItem>
-                  <SelectItem value="Bolivia">Bolivia</SelectItem>
-                  <SelectItem value="Bosnia and Herzegovina">Bosnia and Herzegovina</SelectItem>
-                  <SelectItem value="Brazil">Brazil</SelectItem>
-                  <SelectItem value="Bulgaria">Bulgaria</SelectItem>
-                  <SelectItem value="Cambodia">Cambodia</SelectItem>
-                  <SelectItem value="Canada">Canada</SelectItem>
-                  <SelectItem value="Chile">Chile</SelectItem>
-                  <SelectItem value="China">China</SelectItem>
-                  <SelectItem value="Colombia">Colombia</SelectItem>
-                  <SelectItem value="Costa Rica">Costa Rica</SelectItem>
-                  <SelectItem value="Croatia">Croatia</SelectItem>
-                  <SelectItem value="Czech Republic">Czech Republic</SelectItem>
-                  <SelectItem value="Denmark">Denmark</SelectItem>
-                  <SelectItem value="Ecuador">Ecuador</SelectItem>
-                  <SelectItem value="Egypt">Egypt</SelectItem>
-                  <SelectItem value="Estonia">Estonia</SelectItem>
-                  <SelectItem value="Finland">Finland</SelectItem>
-                  <SelectItem value="France">France</SelectItem>
-                  <SelectItem value="Georgia">Georgia</SelectItem>
-                  <SelectItem value="Germany">Germany</SelectItem>
-                  <SelectItem value="Greece">Greece</SelectItem>
-                  <SelectItem value="Hungary">Hungary</SelectItem>
-                  <SelectItem value="Iceland">Iceland</SelectItem>
-                  <SelectItem value="India">India</SelectItem>
-                  <SelectItem value="Indonesia">Indonesia</SelectItem>
-                  <SelectItem value="Iran">Iran</SelectItem>
-                  <SelectItem value="Iraq">Iraq</SelectItem>
-                  <SelectItem value="Ireland">Ireland</SelectItem>
-                  <SelectItem value="Israel">Israel</SelectItem>
-                  <SelectItem value="Italy">Italy</SelectItem>
-                  <SelectItem value="Japan">Japan</SelectItem>
-                  <SelectItem value="Jordan">Jordan</SelectItem>
-                  <SelectItem value="Kazakhstan">Kazakhstan</SelectItem>
-                  <SelectItem value="Kenya">Kenya</SelectItem>
-                  <SelectItem value="Kuwait">Kuwait</SelectItem>
-                  <SelectItem value="Latvia">Latvia</SelectItem>
-                  <SelectItem value="Lebanon">Lebanon</SelectItem>
-                  <SelectItem value="Lithuania">Lithuania</SelectItem>
-                  <SelectItem value="Luxembourg">Luxembourg</SelectItem>
-                  <SelectItem value="Malaysia">Malaysia</SelectItem>
-                  <SelectItem value="Mexico">Mexico</SelectItem>
-                  <SelectItem value="Morocco">Morocco</SelectItem>
-                  <SelectItem value="Netherlands">Netherlands</SelectItem>
-                  <SelectItem value="New Zealand">New Zealand</SelectItem>
-                  <SelectItem value="Nigeria">Nigeria</SelectItem>
-                  <SelectItem value="Norway">Norway</SelectItem>
-                  <SelectItem value="Pakistan">Pakistan</SelectItem>
-                  <SelectItem value="Peru">Peru</SelectItem>
-                  <SelectItem value="Philippines">Philippines</SelectItem>
-                  <SelectItem value="Poland">Poland</SelectItem>
-                  <SelectItem value="Portugal">Portugal</SelectItem>
-                  <SelectItem value="Qatar">Qatar</SelectItem>
-                  <SelectItem value="Romania">Romania</SelectItem>
-                  <SelectItem value="Russia">Russia</SelectItem>
-                  <SelectItem value="Saudi Arabia">Saudi Arabia</SelectItem>
-                  <SelectItem value="Serbia">Serbia</SelectItem>
-                  <SelectItem value="Singapore">Singapore</SelectItem>
-                  <SelectItem value="Slovakia">Slovakia</SelectItem>
-                  <SelectItem value="Slovenia">Slovenia</SelectItem>
-                  <SelectItem value="South Africa">South Africa</SelectItem>
-                  <SelectItem value="South Korea">South Korea</SelectItem>
-                  <SelectItem value="Spain">Spain</SelectItem>
-                  <SelectItem value="Sri Lanka">Sri Lanka</SelectItem>
-                  <SelectItem value="Sweden">Sweden</SelectItem>
-                  <SelectItem value="Switzerland">Switzerland</SelectItem>
-                  <SelectItem value="Thailand">Thailand</SelectItem>
-                  <SelectItem value="Turkey">Turkey</SelectItem>
-                  <SelectItem value="Ukraine">Ukraine</SelectItem>
-                  <SelectItem value="United Arab Emirates">United Arab Emirates</SelectItem>
-                  <SelectItem value="United Kingdom">United Kingdom</SelectItem>
-                  <SelectItem value="United States">United States</SelectItem>
-                  <SelectItem value="Uruguay">Uruguay</SelectItem>
-                  <SelectItem value="Venezuela">Venezuela</SelectItem>
-                  <SelectItem value="Vietnam">Vietnam</SelectItem>
-                  <SelectItem value="Other">Other</SelectItem>
+                <SelectContent className="max-h-[400px]">
+                  {Object.entries(JOB_ROLES).map(([category, roles]) => (
+                    <div key={category}>
+                      <div className="px-2 py-1.5 text-sm font-semibold text-gray-500 bg-gray-50 border-b">
+                        {category}
+                      </div>
+                      {roles.map((role) => (
+                        <SelectItem key={role} value={role} className="pl-6">
+                          {role}
+                        </SelectItem>
+                      ))}
+                    </div>
+                  ))}
                 </SelectContent>
               </Select>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="city" className="text-xl font-semibold">City/State *</Label>
-              <p className="text-sm text-gray-400 -mt-1 mb-2">e.g. New York, NY</p>
-              <div className="w-full md:w-1/2">
-                <Input
-                  id="city"
-                  value={formData.city}
-                  onChange={(e) => handleChange("city", e.target.value)}
-                  required
-                  className="bg-white border-gray-300 text-gray-900"
-                />
-              </div>
+              <Label htmlFor="borough" className="text-xl font-semibold">NYC Borough *</Label>
+              <p className="text-sm text-gray-400 -mt-1 mb-2">Select the NYC borough where the position is located</p>
+              <Select key={`borough-${formData.borough}-${isFormDataLoaded}`} value={formData.borough} onValueChange={(value) => handleChange("borough", value)}>
+                <SelectTrigger className="bg-white border-gray-300 text-gray-900">
+                  <SelectValue placeholder="Select NYC borough" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Manhattan">Manhattan</SelectItem>
+                  <SelectItem value="Brooklyn">Brooklyn</SelectItem>
+                  <SelectItem value="Queens">Queens</SelectItem>
+                  <SelectItem value="The Bronx">The Bronx</SelectItem>
+                  <SelectItem value="Staten Island">Staten Island</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
 
             <div className="space-y-2">

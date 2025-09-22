@@ -20,6 +20,7 @@ export const jobs = pgTable('jobs', {
   title: text('title').notNull(),
   location: text('location').notNull(),
   type: text('type').notNull(), // 'full-time', 'part-time'
+  role: text('role'), // Job role/category
   shortBio: text('short_bio').notNull(),
   jobSpec: text('job_spec').notNull(),
   aboutCompany: text('about_company').notNull(),
