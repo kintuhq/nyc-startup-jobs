@@ -118,11 +118,10 @@ export default function HomePage() {
       <section className="py-16 px-4">
         <div className="mx-auto text-center" style={{ maxWidth: "1240px" }}>
           <h2 className="text-5xl font-bold text-foreground mb-4 text-balance">
-            Free Job Board For <span className="bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">NYC Startups</span>
+            Free Job Board For <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">NYC Startups</span>
           </h2>
           <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto text-pretty">
-            Connect with NYC startups through NYC Startup Jobs. Free job postings for companies, free
-            applications for professionals.
+            Free job postings for NYC startups, free applications for professionals
           </p>
 
           {/* Newsletter Signup */}
@@ -134,7 +133,7 @@ export default function HomePage() {
                 width: '100%',
                 maxWidth: '400px',
                 border: '3px solid transparent',
-                backgroundImage: 'linear-gradient(white, white), linear-gradient(45deg, #2563eb, #3b82f6)',
+                backgroundImage: 'linear-gradient(white, white), linear-gradient(45deg, #654597, #8a6bb1)',
                 backgroundOrigin: 'border-box',
                 backgroundClip: 'content-box, border-box',
                 display: 'flex',
@@ -384,7 +383,7 @@ export default function HomePage() {
                 </h3>
               </div>
               <p className="text-muted-foreground mb-4 max-w-md">
-                The platform connecting talented professionals with NYC startups.
+                Helping NYC's startup ecosystem thrive by connecting skilled professionals with the city's most promising startups.
               </p>
             </div>
 

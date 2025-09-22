@@ -110,7 +110,7 @@ export default function NewJobPage() {
                 </h3>
               </div>
               <p className="text-muted-foreground mb-4 max-w-md">
-                The platform connecting talented professionals with NYC startups.
+                Helping NYC's startup ecosystem thrive by connecting skilled professionals with the city's most promising startups.
               </p>
             </div>
 

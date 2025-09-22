@@ -22,7 +22,7 @@ export default function Header() {
             />
             <div>
               <h1 className="text-2xl font-bold">
-                <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">NYC Startup Jobs</span>
+                <span className="text-primary">NYC Startup Jobs</span>
               </h1>
               <p className="text-muted-foreground -mt-1 text-sm">Building NYC startups</p>
             </div>
