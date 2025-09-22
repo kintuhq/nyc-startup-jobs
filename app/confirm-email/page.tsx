@@ -24,7 +24,7 @@ export default function ConfirmEmailPage() {
         <Card>
           <CardHeader className="text-center">
             <div className="mb-4">
-              <Mail className="w-16 h-16 mx-auto text-blue-600" />
+              <Mail className="w-16 h-16 mx-auto text-primary" />
             </div>
             <CardTitle className="text-2xl">Check your email</CardTitle>
             <CardDescription>

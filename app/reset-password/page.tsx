@@ -128,7 +128,7 @@ export default function ResetPasswordPage() {
                   Password reset links expire after 1 hour for security reasons.
                 </p>
                 <Link href="/forgot-password">
-                  <Button className="w-full bg-blue-600 hover:bg-blue-700 cursor-pointer">
+                  <Button className="w-full bg-primary hover:bg-primary/90 cursor-pointer">
                     Request New Reset Link
                   </Button>
                 </Link>
@@ -164,7 +164,7 @@ export default function ResetPasswordPage() {
                   You can now sign in with your new password.
                 </p>
                 <Link href="/login">
-                  <Button className="w-full bg-blue-600 hover:bg-blue-700 cursor-pointer">
+                  <Button className="w-full bg-primary hover:bg-primary/90 cursor-pointer">
                     Sign In
                   </Button>
                 </Link>
@@ -227,7 +227,7 @@ export default function ResetPasswordPage() {
 
               <Button
                 type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-700 cursor-pointer"
+                className="w-full bg-primary hover:bg-primary/90 cursor-pointer"
                 disabled={isLoading}
               >
                 {isLoading ? "Resetting password..." : "Reset password"}

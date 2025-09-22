@@ -67,7 +67,7 @@ export default function VerifyEmailPage() {
           <CardContent className="text-center">
             {status === 'loading' && (
               <div className="py-8">
-                <Loader2 className="w-12 h-12 animate-spin mx-auto mb-4 text-blue-600" />
+                <Loader2 className="w-12 h-12 animate-spin mx-auto mb-4 text-primary" />
                 <p className="text-muted-foreground">Verifying your email...</p>
               </div>
             )}
@@ -80,7 +80,7 @@ export default function VerifyEmailPage() {
                 <div className="space-y-3">
                   <Button
                     onClick={() => router.push("/login")}
-                    className="w-full bg-blue-600 hover:bg-blue-700 cursor-pointer"
+                    className="w-full bg-primary hover:bg-primary/90 cursor-pointer"
                   >
                     Sign In
                   </Button>
@@ -103,7 +103,7 @@ export default function VerifyEmailPage() {
                 <div className="space-y-3">
                   <Button
                     onClick={() => router.push("/register")}
-                    className="w-full bg-blue-600 hover:bg-blue-700 cursor-pointer"
+                    className="w-full bg-primary hover:bg-primary/90 cursor-pointer"
                   >
                     Create New Account
                   </Button>

@@ -87,7 +87,7 @@ export default function DashboardPage() {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
           <p className="text-gray-600">Loading dashboard...</p>
         </div>
       </div>
@@ -109,7 +109,7 @@ export default function DashboardPage() {
               <div>
                 <a href="/" className="cursor-pointer">
                   <h1 className="text-2xl font-bold">
-                    <span className="text-black">NYC Startup</span> <span className="text-blue-600">Jobs</span>
+                    <span className="text-black">NYC Startup</span> <span className="text-primary">Jobs</span>
                   </h1>
                 </a>
                 <p className="text-muted-foreground -mt-1 text-sm">Building NYC startups</p>
@@ -124,7 +124,7 @@ export default function DashboardPage() {
               </button>
               <Button
                 onClick={() => router.push("/dashboard/add-job")}
-                className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-base font-semibold text-white bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg shadow-md hover:shadow-lg hover:brightness-110 transition-all duration-300 px-6 py-3 h-11 cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-base font-semibold text-white bg-gradient-to-r from-primary to-primary/90 rounded-lg shadow-md hover:shadow-lg hover:brightness-110 transition-all duration-300 px-6 py-3 h-11 cursor-pointer"
               >
                 <Plus className="w-5 h-5 mr-1" />
                 Add New Job
@@ -186,7 +186,7 @@ export default function DashboardPage() {
                         variant="ghost"
                         size="sm"
                         onClick={() => router.push(`/jobs/${job.shortId}`)}
-                        className="text-gray-600 cursor-pointer hover:!text-blue-500 h-8 w-8 p-0"
+                        className="text-gray-600 cursor-pointer hover:!text-primary h-8 w-8 p-0"
                       >
                         <Eye className="w-4 h-4" />
                       </Button>
@@ -194,7 +194,7 @@ export default function DashboardPage() {
                         variant="ghost"
                         size="sm"
                         onClick={() => router.push(`/dashboard/edit-job/${job.id}`)}
-                        className="text-gray-600 cursor-pointer hover:!bg-blue-500 hover:!text-white h-8 w-8 p-0"
+                        className="text-gray-600 cursor-pointer hover:!bg-primary hover:!text-white h-8 w-8 p-0"
                       >
                         <Edit className="w-4 h-4" />
                       </Button>

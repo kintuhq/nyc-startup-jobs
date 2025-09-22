@@ -10,7 +10,7 @@ import { generateShortId } from '@/lib/short-id'
 const jobSchema = z.object({
   title: z.string().min(1),
   location: z.enum(['Manhattan', 'Brooklyn', 'Queens', 'The Bronx', 'Staten Island']),
-  type: z.enum(['full-time', 'part-time', 'contractor']),
+  type: z.enum(['full-time', 'part-time', 'contractor', 'internship']),
   role: z.string().optional(),
   shortBio: z.string().min(1),
   jobSpec: z.string().min(1),

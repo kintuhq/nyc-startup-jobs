@@ -19,7 +19,7 @@ export const jobs = pgTable('jobs', {
   companyId: uuid('company_id').references(() => companies.id, { onDelete: 'cascade' }).notNull(),
   title: text('title').notNull(),
   location: text('location').notNull(),
-  type: text('type').notNull(), // 'full-time', 'part-time'
+  type: text('type').notNull(), // 'full-time', 'part-time', 'contractor', 'internship'
   role: text('role'), // Job role/category
   shortBio: text('short_bio').notNull(),
   jobSpec: text('job_spec').notNull(),

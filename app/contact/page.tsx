@@ -67,7 +67,7 @@ export default function ContactPage() {
                 <div>
                   <a href="/" className="cursor-pointer">
                     <h1 className="text-2xl font-bold">
-                      <span className="text-black">NYC Startup</span> <span className="text-blue-600">Jobs</span>
+                      <span className="text-black">NYC Startup</span> <span className="text-primary">Jobs</span>
                     </h1>
                   </a>
                   <p className="text-muted-foreground -mt-1 text-sm">Building NYC startups</p>
@@ -100,7 +100,7 @@ export default function ContactPage() {
                 </p>
                 <Button
                   onClick={() => router.push("/")}
-                  className="bg-blue-600 hover:bg-blue-700 cursor-pointer"
+                  className="bg-primary hover:bg-primary/90 cursor-pointer"
                 >
                   Browse Jobs
                 </Button>
@@ -126,7 +126,7 @@ export default function ContactPage() {
               />
               <div>
                 <h1 className="text-2xl font-bold">
-                  <span className="text-black">NYC Startup</span> <span className="text-blue-600">Jobs</span>
+                  <span className="text-black">NYC Startup</span> <span className="text-primary">Jobs</span>
                 </h1>
                 <p className="text-muted-foreground -mt-1 text-sm">Building NYC startups</p>
               </div>
@@ -209,7 +209,7 @@ export default function ContactPage() {
 
               <Button
                 type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-700 cursor-pointer"
+                className="w-full bg-primary hover:bg-primary/90 cursor-pointer"
                 disabled={isLoading}
               >
                 {isLoading ? "Sending..." : "Send Message"}

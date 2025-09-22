@@ -107,7 +107,7 @@ export default function JobDetailPage() {
               <div>
                 <a href="/" className="cursor-pointer">
                   <h1 className="text-2xl font-bold">
-                    <span className="text-black">NYC Startup</span> <span className="text-blue-600">Jobs</span>
+                    <span className="text-black">NYC Startup</span> <span className="text-primary">Jobs</span>
                   </h1>
                 </a>
                 <p className="text-muted-foreground -mt-1 text-sm">Building NYC startups</p>

@@ -495,6 +495,7 @@ export default function JobPostingForm({ onSubmit, onClose, editingJob, isModal 
                   <SelectItem value="full-time">Full-time</SelectItem>
                   <SelectItem value="part-time">Part-time</SelectItem>
                   <SelectItem value="contractor">Contractor</SelectItem>
+                  <SelectItem value="internship">Internship</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -708,7 +709,7 @@ export default function JobPostingForm({ onSubmit, onClose, editingJob, isModal 
             </div>
 
             <div className="flex gap-3 pt-4">
-              <Button type="submit" className="flex-1 h-12 cursor-pointer bg-blue-600 hover:bg-blue-700 hover:shadow-lg transition-all duration-200 text-white">
+              <Button type="submit" className="flex-1 h-12 cursor-pointer bg-primary hover:bg-primary/90 hover:shadow-lg transition-all duration-200 text-primary-foreground">
                 {editingJob ? "Update Job Posting" : "Post Job for Free"}
               </Button>
               {isModal && (
@@ -720,7 +721,7 @@ export default function JobPostingForm({ onSubmit, onClose, editingJob, isModal 
 
             <div className="text-center mt-4">
               <p className="text-sm text-gray-600">
-                Need any help? <a href="/contact" className="text-blue-600 hover:text-blue-700 underline">Contact us</a>
+                Need any help? <a href="/contact" className="text-primary hover:text-primary/90 underline">Contact us</a>
               </p>
             </div>
           </form>
