@@ -68,7 +68,7 @@ export default function HomePage() {
       })
 
       if (response.ok) {
-        setSubscriptionMessage("Thanks! You'll receive notifications about new data analyst positions.")
+        setSubscriptionMessage("Thanks! You'll receive notifications about new professional positions.")
         setEmail("")
         setShowEmailInput(false)
       } else {
@@ -91,7 +91,7 @@ export default function HomePage() {
             <div className="flex items-center">
               <Image
                 src="/logo.png"
-                alt="DataHire logo"
+                alt="NYC Startup Jobs logo"
                 width={56}
                 height={56}
                 className="h-14 w-14 mr-2"
@@ -99,9 +99,9 @@ export default function HomePage() {
               />
               <div>
                 <h1 className="text-2xl font-bold">
-                  <span className="text-black">Data</span> <span className="text-blue-600">Hire</span>
+                  <span className="text-black">NYC Startup</span> <span className="text-blue-600">Jobs</span>
                 </h1>
-                <p className="text-muted-foreground -mt-1 text-sm">Data Analyst Jobs</p>
+                <p className="text-muted-foreground -mt-1 text-sm">Building NYC startups</p>
               </div>
             </div>
             <Button
@@ -118,11 +118,11 @@ export default function HomePage() {
       <section className="py-16 px-4">
         <div className="mx-auto text-center" style={{ maxWidth: "1240px" }}>
           <h2 className="text-5xl font-bold text-foreground mb-4 text-balance">
-            Free Job Board For <span className="bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">Data Analysts</span>
+            NYC Startup Jobs For <span className="bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">Professionals</span>
           </h2>
           <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto text-pretty">
-            Connect with companies worldwide through DataHire. Free job postings for companies, free
-            applications for data analysts.
+            Connect with NYC startups through NYC Startup Jobs. Free job postings for companies, free
+            applications for professionals.
           </p>
 
           {/* Newsletter Signup */}
@@ -158,7 +158,7 @@ export default function HomePage() {
                   >
                     <Mail className="w-4 h-4 text-gray-500 mr-3" />
                     <span className="text-gray-500 text-xs sm:text-sm font-medium">
-                      Get weekly data analyst job alerts
+                      Get weekly professional job alerts
                     </span>
                   </div>
 
@@ -264,7 +264,7 @@ export default function HomePage() {
           {/* Powered by Fizzle */}
           <div className="flex items-center justify-center gap-2 mt-6 pt-4">
             <span className="text-xs text-muted-foreground">Sponsor:</span>
-            <a href="https://www.example.com/?utm_source=datahire" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.example.com/?utm_source=nycstartupjobs" target="_blank" rel="noopener noreferrer">
               <Image
                 src="/company.png"
                 alt="Fizzle"
@@ -372,7 +372,7 @@ export default function HomePage() {
           {!isLoading && jobs.length === 0 && (
             <div className="text-center py-12">
               <p className="text-muted-foreground text-lg">No job opportunities available yet.</p>
-              <p className="text-muted-foreground">Subscribe above to get notified when new data analyst positions are posted!</p>
+              <p className="text-muted-foreground">Subscribe above to get notified when new professional positions are posted!</p>
             </div>
           )}
         </div>
@@ -387,18 +387,18 @@ export default function HomePage() {
               <div className="flex items-center mb-3">
                 <Image
                   src="/logo.png"
-                  alt="DataHire Logo"
+                  alt="NYC Startup Jobs Logo"
                   width={32}
                   height={32}
                   className="h-8 w-8 mr-2"
                   loading="lazy"
                 />
                 <h3 className="text-2xl font-bold text-foreground">
-                  Data <span className="text-primary">Hire</span>
+                  NYC Startup <span className="text-primary">Jobs</span>
                 </h3>
               </div>
               <p className="text-muted-foreground mb-4 max-w-md">
-                The global platform connecting talented data analysts with companies worldwide.
+                The platform connecting talented professionals with NYC startups.
               </p>
             </div>
 
@@ -472,7 +472,7 @@ export default function HomePage() {
           {/* Bottom Section */}
           <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
             <div className="text-sm text-muted-foreground mb-4 md:mb-0">
-              © 2025 Data Hire.
+              © 2025 NYC Startup Jobs.
             </div>
             <div className="flex items-center gap-6 text-sm text-muted-foreground">
               <a href="#" className="hover:text-primary transition-colors">

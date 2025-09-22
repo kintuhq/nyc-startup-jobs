@@ -8,7 +8,7 @@ const nextConfig = {
   },
   images: {
     unoptimized: true,
-    domains: ['pub-66c0aa9041d54a6db13e5f38ab85e73e.r2.dev', 'pub-536cec96d6204af29abd07d788539f05.r2.dev', 'images.datahire.co', 'pub-3fb747d98ae94612aa7e333baa832d10.r2.dev'],
+    domains: ['pub-66c0aa9041d54a6db13e5f38ab85e73e.r2.dev', 'pub-536cec96d6204af29abd07d788539f05.r2.dev', 'pub-83334640d8a54d1199643b21d048c64e.r2.dev', 'pub-3fb747d98ae94612aa7e333baa832d10.r2.dev'],
   },
   async headers() {
     return [

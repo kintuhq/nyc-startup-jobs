@@ -73,7 +73,7 @@ export default function RegisterPage() {
             <CardHeader className="text-center">
               <CardTitle className="text-2xl">Create an account</CardTitle>
               <CardDescription className="mb-4">
-                Join DataHire to start posting data analyst positions
+                Join NYC Startup Jobs to start posting positions
               </CardDescription>
             </CardHeader>
             <CardContent>

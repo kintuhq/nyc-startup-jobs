@@ -395,12 +395,12 @@ export default function JobPostingForm({ onSubmit, onClose, editingJob, isModal 
           <div className="flex items-center justify-between">
             <div>
               <CardTitle className="text-2xl">
-                {editingJob ? "Edit Job Posting" : "Post a Data Analyst Job"}
+                {editingJob ? "Edit Job Posting" : "Post a Job"}
               </CardTitle>
               <CardDescription>
                 {editingJob
                   ? "Update your job posting details"
-                  : "Share your opportunity with data analysts worldwide - completely free!"
+                  : "Share your opportunity with talented professionals - completely free!"
                 }
               </CardDescription>
             </div>
@@ -416,7 +416,7 @@ export default function JobPostingForm({ onSubmit, onClose, editingJob, isModal 
             <form onSubmit={handleSubmit} className="space-y-10">
             <div className="space-y-2">
               <Label htmlFor="title" className="text-xl font-semibold">Job Title *</Label>
-              <p className="text-sm text-gray-400 -mt-1 mb-2">e.g. Senior Data Analyst</p>
+              <p className="text-sm text-gray-400 -mt-1 mb-2">e.g. Senior Software Engineer</p>
               <div className="w-full md:w-1/2">
                 <Input
                   id="title"
@@ -573,7 +573,7 @@ export default function JobPostingForm({ onSubmit, onClose, editingJob, isModal 
             <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 space-y-6">
               <div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Company Information</h3>
-                <p className="text-sm text-gray-600">Tell data analysts about your company</p>
+                <p className="text-sm text-gray-600">Tell candidates about your company</p>
               </div>
 
               <div className="space-y-2">
@@ -609,7 +609,7 @@ export default function JobPostingForm({ onSubmit, onClose, editingJob, isModal 
 
               <div className="space-y-2">
                 <Label htmlFor="aboutCompany" className="text-xl font-semibold">About the Company *</Label>
-                <p className="text-sm text-gray-400 -mt-1 mb-2">Tell data analysts about your company, culture, mission, values</p>
+                <p className="text-sm text-gray-400 -mt-1 mb-2">Tell candidates about your company, culture, mission, values</p>
                 <Textarea
                   id="aboutCompany"
                   value={formData.aboutCompany}

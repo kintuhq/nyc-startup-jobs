@@ -45,16 +45,16 @@ export default function NewJobPage() {
             <div className="flex items-center">
               <img
                 src="/logo.png"
-                alt="DataHire logo"
+                alt="NYC Startup Jobs logo"
                 className="h-14 w-14 mr-2"
               />
               <div>
                 <a href="/" className="cursor-pointer">
                   <h1 className="text-2xl font-bold">
-                    <span className="text-black">Data</span> <span className="text-blue-600">Hire</span>
+                    <span className="text-black">NYC Startup</span> <span className="text-blue-600">Jobs</span>
                   </h1>
                 </a>
-                <p className="text-muted-foreground -mt-1 text-sm">Data Analyst Jobs</p>
+                <p className="text-muted-foreground -mt-1 text-sm">Building NYC startups</p>
               </div>
             </div>
             <div className="flex items-center gap-4">
@@ -79,9 +79,9 @@ export default function NewJobPage() {
       <div className="max-w-[800px] mx-auto px-6 py-12">
 
         <div className="mb-6">
-          <h2 className="text-3xl font-bold text-gray-900">Post a Data Analyst Job</h2>
+          <h2 className="text-3xl font-bold text-gray-900">Post a Job</h2>
           <p className="text-gray-600 mt-2">
-            Share your opportunity with data analysts worldwide - completely free!
+            Share your opportunity with talented professionals - completely free!
           </p>
         </div>
 
@@ -102,15 +102,15 @@ export default function NewJobPage() {
               <div className="flex items-center mb-3">
                 <img
                   src="/logo.png"
-                  alt="DataHire Logo"
+                  alt="NYC Startup Jobs Logo"
                   className="h-8 w-8 mr-2"
                 />
                 <h3 className="text-2xl font-bold text-foreground">
-                  Data <span className="text-primary">Hire</span>
+                  NYC Startup <span className="text-primary">Jobs</span>
                 </h3>
               </div>
               <p className="text-muted-foreground mb-4 max-w-md">
-                The global platform connecting talented data analysts with companies worldwide.
+                The platform connecting talented professionals with NYC startups.
               </p>
             </div>
 
@@ -162,7 +162,7 @@ export default function NewJobPage() {
           {/* Bottom Section */}
           <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
             <div className="text-sm text-muted-foreground mb-4 md:mb-0">
-              © 2025 DataHire.
+              © 2025 NYC Startup Jobs.
             </div>
             <div className="flex items-center gap-6 text-sm text-muted-foreground">
               <a href="#" className="hover:text-primary transition-colors">

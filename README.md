@@ -1,6 +1,6 @@
-# DataHire - Data Analyst Job Board
+# NYC Startup Jobs - Building NYC startups
 
-A modern job board platform connecting data analysts with companies worldwide. Built with Next.js 14, featuring free job postings for companies and unlimited applications for data analysts.
+A modern job board platform connecting professionals with NYC startups. Built with Next.js 14, featuring free job postings for companies and unlimited applications for professionals.
 
 ## 🚀 Features
 
@@ -12,7 +12,7 @@ A modern job board platform connecting data analysts with companies worldwide. B
 - **Authentication** with NextAuth
 - **Email notifications** via Resend
 
-### For Data Analysts
+### For Job Seekers
 - **Browse jobs** without creating an account
 - **Newsletter subscription** for new job notifications
 - **Detailed job pages** with full specifications
@@ -111,13 +111,13 @@ Create `.env.local` with:
 ```env
 DATABASE_URL=your_neon_database_url
 RESEND_API_KEY=your_resend_api_key
-EMAIL_FROM_ADDRESS=team@updates.datahire.co
+EMAIL_FROM_ADDRESS=team@updates.nycstartupjobs.com
 R2_ENDPOINT=your_r2_endpoint
 R2_PUBLIC_URL=your_r2_public_url
 R2_ACCESS_KEY_ID=your_r2_access_key
 R2_SECRET_ACCESS_KEY=your_r2_secret_key
 JWT_SECRET=your_jwt_secret
-NEXT_PUBLIC_BASE_URL=https://datahire.co
+NEXT_PUBLIC_BASE_URL=https://nycstartupjobs.com
 ```
 
 ### Installation & Setup
@@ -145,7 +145,7 @@ npm run dev
 4. Upload company logo for branding
 5. Create detailed job postings with rich descriptions
 
-### For Data Analysts
+### For Job Seekers
 1. Browse jobs on the homepage
 2. Subscribe to newsletter for new job notifications
 3. Click "View Details" to see full job specifications
@@ -232,4 +232,4 @@ npm run db:migrate   # Run migrations
 
 ---
 
-**DataHire** - Connecting talented data analysts with companies worldwide. 📊💼
+**NYC Startup Jobs** - Connecting talented professionals with NYC startups. 📊💼

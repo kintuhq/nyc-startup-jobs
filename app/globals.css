@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Updated color tokens for DataHire with blue and grey tech theme */
+  /* Updated color tokens for NYC Startup Jobs with blue and grey tech theme */
   --background: white;
   --foreground: oklch(0.25 0 0); /* Dark gray text */
   --card: oklch(1 0 0); /* White cards */

@@ -122,16 +122,16 @@ export default function EditJobPage() {
             <div className="flex items-center">
               <img
                 src="/logo.png"
-                alt="DataHire logo"
+                alt="NYC Startup Jobs logo"
                 className="h-14 w-14 mr-2"
               />
               <div>
                 <a href="/" className="cursor-pointer">
                   <h1 className="text-2xl font-bold">
-                    <span className="text-black">Data</span> <span className="text-blue-600">Hire</span>
+                    <span className="text-black">NYC Startup</span> <span className="text-blue-600">Jobs</span>
                   </h1>
                 </a>
-                <p className="text-muted-foreground -mt-1 text-sm">Data Analyst Jobs</p>
+                <p className="text-muted-foreground -mt-1 text-sm">Building NYC startups</p>
               </div>
             </div>
             <div className="flex items-center gap-4">

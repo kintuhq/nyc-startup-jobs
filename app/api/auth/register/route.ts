@@ -51,7 +51,7 @@ export async function POST(request: NextRequest) {
     try {
       const verificationToken = await createEmailVerificationToken(email)
       const protocol = request.headers.get('x-forwarded-proto') || 'https'
-      const host = request.headers.get('host') || 'datahire.co'
+      const host = request.headers.get('host') || 'nycstartupjobs.com'
       const baseUrl = `${protocol}://${host}`
       await sendEmailVerificationEmail(email, verificationToken, baseUrl)
     } catch (error) {

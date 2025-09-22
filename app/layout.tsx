@@ -6,23 +6,23 @@ import { Suspense } from "react"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "DataHire - Data Analyst Jobs",
-  description: "Find your perfect data analyst position. Free job board for data analysts and companies.",
+  title: "NYC Startup Jobs - Building NYC startups",
+  description: "Find your perfect professional position at NYC startups. Free job board for professionals and companies.",
   generator: "v0.app",
   icons: {
     icon: "/favicon.png",
   },
   openGraph: {
-    title: "DataHire - Data Analyst Jobs",
-    description: "Find your perfect data analyst position. Free job board for data analysts and companies.",
-    url: "https://datahire.co",
-    siteName: "DataHire",
+    title: "NYC Startup Jobs - Building NYC startups",
+    description: "Find your perfect professional position at NYC startups. Free job board for professionals and companies.",
+    url: "https://nycstartupjobs.com",
+    siteName: "NYC Startup Jobs",
     images: [
       {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "DataHire - Data Analyst Jobs",
+        alt: "NYC Startup Jobs - Building NYC startups",
       },
     ],
     locale: "en_US",
@@ -30,8 +30,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "DataHire - Data Analyst Jobs",
-    description: "Find your perfect data analyst position. Free job board for data analysts and companies.",
+    title: "NYC Startup Jobs - Building NYC startups",
+    description: "Find your perfect professional position at NYC startups. Free job board for professionals and companies.",
     images: ["/og.png"],
   },
 }
