@@ -99,7 +99,7 @@ export default function HomePage() {
               />
               <div>
                 <h1 className="text-2xl font-bold">
-                  <span className="text-black">NYC Startup</span> <span className="text-primary">Jobs</span>
+                  <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">NYC Startup Jobs</span>
                 </h1>
                 <p className="text-muted-foreground -mt-1 text-sm">Building NYC startups</p>
               </div>
@@ -158,7 +158,7 @@ export default function HomePage() {
                   >
                     <Mail className="w-4 h-4 text-gray-500 mr-3" />
                     <span className="text-gray-500 text-xs sm:text-sm font-medium">
-                      Get weekly professional job alerts
+                      Get weekly NYC job alerts
                     </span>
                   </div>
 
@@ -167,7 +167,7 @@ export default function HomePage() {
                     style={{
                       width: '96px',
                       height: '100%',
-                      background: 'linear-gradient(45deg, #2563eb, #3b82f6)',
+                      background: 'linear-gradient(45deg, #654597, #8a6bb1)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
