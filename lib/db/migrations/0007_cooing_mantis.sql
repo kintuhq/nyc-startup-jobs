@@ -1,0 +1,1 @@
+ALTER TABLE "jobs" ADD COLUMN "school_logo" text;

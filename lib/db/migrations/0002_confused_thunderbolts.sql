@@ -1,0 +1,1 @@
+ALTER TABLE "newsletter_subscribers" ALTER COLUMN "name" DROP NOT NULL;
