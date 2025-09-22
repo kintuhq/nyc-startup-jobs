@@ -29,7 +29,7 @@ export default function Header() {
           </div>
           <Button
             onClick={() => router.push("/register")}
-            className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-base font-semibold text-white bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg shadow-md hover:shadow-lg hover:brightness-110 transition-all duration-300 px-6 py-3 h-11 cursor-pointer"
+            className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-base font-semibold bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg shadow-md hover:shadow-lg transition-all duration-300 px-6 py-3 h-11 cursor-pointer"
           >
             Post a Job
           </Button>

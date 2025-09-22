@@ -16,8 +16,8 @@ export default function Footer() {
                 className="h-8 w-8 mr-2"
                 loading="lazy"
               />
-              <h3 className="text-2xl font-bold text-foreground">
-                NYC Startup <span className="text-primary">Jobs</span>
+              <h3 className="text-2xl font-bold">
+                <span className="text-primary">NYC</span> <span className="text-foreground">Startup Jobs</span>
               </h3>
             </div>
             <p className="text-muted-foreground mb-4 max-w-md">
@@ -95,7 +95,7 @@ export default function Footer() {
         {/* Bottom Section */}
         <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="text-sm text-muted-foreground mb-4 md:mb-0">
-            © 2025 NYC Startup Jobs.
+            © 2025 <span className="text-primary">NYC</span> <span className="text-foreground">Startup Jobs</span>.
           </div>
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
             <a href="#" className="hover:text-primary transition-colors">

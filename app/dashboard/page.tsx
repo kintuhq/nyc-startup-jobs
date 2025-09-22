@@ -126,7 +126,6 @@ export default function DashboardPage() {
                 onClick={() => router.push("/dashboard/add-job")}
                 className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-base font-semibold text-white bg-gradient-to-r from-primary to-primary/90 rounded-lg shadow-md hover:shadow-lg hover:brightness-110 transition-all duration-300 px-6 py-3 h-11 cursor-pointer"
               >
-                <Plus className="w-5 h-5 mr-1" />
                 Add New Job
               </Button>
             </div>

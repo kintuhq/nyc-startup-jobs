@@ -147,7 +147,7 @@ export default function ContactPage() {
         <Card>
           <CardHeader className="text-center">
             <CardTitle className="text-2xl">Contact Us</CardTitle>
-            <CardDescription className="pb-4">
+            <CardDescription className="pb-8">
               Have a question or need help? Send us a message and we'll get back to you soon.
             </CardDescription>
           </CardHeader>
