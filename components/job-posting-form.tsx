@@ -709,7 +709,13 @@ export default function JobPostingForm({ onSubmit, onClose, editingJob, isModal 
             </div>
 
             <div className="flex gap-3 pt-4">
-              <Button type="submit" className="flex-1 h-12 cursor-pointer bg-primary hover:bg-primary/90 hover:shadow-lg transition-all duration-200 text-primary-foreground">
+              <Button
+                type="submit"
+                className="flex-1 h-12 cursor-pointer text-white hover:shadow-lg transition-all duration-200"
+                style={{ backgroundColor: '#14B8A6' }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#0F9488'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#14B8A6'}
+              >
                 {editingJob ? "Update Job Posting" : "Post Job for Free"}
               </Button>
               {isModal && (

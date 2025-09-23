@@ -128,7 +128,12 @@ export default function ResetPasswordPage() {
                   Password reset links expire after 1 hour for security reasons.
                 </p>
                 <Link href="/forgot-password">
-                  <Button className="w-full bg-primary hover:bg-primary/90 cursor-pointer">
+                  <Button
+                    className="w-full cursor-pointer text-white"
+                    style={{ backgroundColor: '#14B8A6' }}
+                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#0F9488'}
+                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#14B8A6'}
+                  >
                     Request New Reset Link
                   </Button>
                 </Link>
@@ -164,7 +169,12 @@ export default function ResetPasswordPage() {
                   You can now sign in with your new password.
                 </p>
                 <Link href="/login">
-                  <Button className="w-full bg-primary hover:bg-primary/90 cursor-pointer">
+                  <Button
+                    className="w-full cursor-pointer text-white"
+                    style={{ backgroundColor: '#14B8A6' }}
+                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#0F9488'}
+                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#14B8A6'}
+                  >
                     Sign In
                   </Button>
                 </Link>
@@ -227,7 +237,10 @@ export default function ResetPasswordPage() {
 
               <Button
                 type="submit"
-                className="w-full bg-primary hover:bg-primary/90 cursor-pointer"
+                className="w-full cursor-pointer text-white"
+                style={{ backgroundColor: '#14B8A6' }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#0F9488'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#14B8A6'}
                 disabled={isLoading}
               >
                 {isLoading ? "Resetting password..." : "Reset password"}

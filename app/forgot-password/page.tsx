@@ -127,7 +127,10 @@ export default function ForgotPasswordPage() {
 
               <Button
                 type="submit"
-                className="w-full bg-primary hover:bg-primary/90 cursor-pointer"
+                className="w-full cursor-pointer text-white"
+                style={{ backgroundColor: '#14B8A6' }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#0F9488'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#14B8A6'}
                 disabled={isLoading}
               >
                 {isLoading ? "Sending..." : "Send reset link"}
