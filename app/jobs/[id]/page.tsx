@@ -92,7 +92,7 @@ export default function JobDetailPage() {
         <div className="text-center">
           <h1 className="text-2xl font-bold text-foreground mb-4">Job Not Found</h1>
           <p className="text-muted-foreground mb-6">{error || "This job posting doesn't exist or has been removed."}</p>
-          <Button onClick={() => router.push("/")} className="bg-orange-500 hover:bg-orange-600 text-white cursor-pointer">
+          <Button onClick={() => router.push("/")} className="bg-primary hover:bg-primary/90 text-white cursor-pointer">
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Jobs
           </Button>
@@ -127,7 +127,7 @@ export default function JobDetailPage() {
                 )}
                 <Badge
                   variant={job.type === "full-time" ? "default" : "secondary"}
-                  className={job.type === "full-time" ? "bg-orange-500 hover:bg-orange-600 text-white" : ""}
+                  className={job.type === "full-time" ? "bg-primary hover:bg-primary/90 text-white" : ""}
                 >
                   {job.type.charAt(0).toUpperCase() + job.type.slice(1)}
                 </Badge>
@@ -139,7 +139,7 @@ export default function JobDetailPage() {
                     href={job.company.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xl text-orange-600 hover:text-orange-700 hover:underline mb-4 inline-flex items-center gap-1"
+                    className="text-xl text-primary hover:text-primary/80 hover:underline mb-4 inline-flex items-center gap-1"
                   >
                     {job.company.name}
                     <ExternalLink className="w-4 h-4" />
@@ -164,7 +164,7 @@ export default function JobDetailPage() {
           {/* Job Specification */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <FileText className="w-5 h-5 text-orange-600" />
+              <FileText className="w-5 h-5 text-primary" />
               <h3 className="text-xl font-semibold">Job Specification</h3>
             </div>
             <div className="prose prose-sm max-w-none">
@@ -175,7 +175,7 @@ export default function JobDetailPage() {
           {/* About the Company */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <Building2 className="w-5 h-5 text-orange-600" />
+              <Building2 className="w-5 h-5 text-primary" />
               <h3 className="text-xl font-semibold">About</h3>
             </div>
             <div className="prose prose-sm max-w-none">
@@ -184,10 +184,10 @@ export default function JobDetailPage() {
           </div>
 
           {/* How to Apply - After About section */}
-          <div className="border-l-4 border-orange-200 bg-orange-50 p-6 rounded-r-lg">
+          <div className="border-l-4 border-primary/20 bg-primary/5 p-6 rounded-r-lg">
             <div className="flex items-center gap-2 mb-4">
-              <Mail className="w-5 h-5 text-orange-600" />
-              <h3 className="text-xl font-semibold text-orange-700">How to Apply</h3>
+              <Mail className="w-5 h-5 text-primary" />
+              <h3 className="text-xl font-semibold text-primary">How to Apply</h3>
             </div>
             <div className="prose prose-sm max-w-none">
               <div className="whitespace-pre-wrap text-foreground leading-relaxed">
@@ -199,13 +199,13 @@ export default function JobDetailPage() {
                     if (line.startsWith('Form: ')) {
                       return (
                         <div key={index} className="break-words">
-                          Form: <a href={url} target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-700 underline break-all">{url}</a>
+                          Form: <a href={url} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80 underline break-all">{url}</a>
                         </div>
                       );
                     } else {
                       return (
                         <div key={index} className="break-words">
-                          <a href={url} target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:text-orange-700 underline break-all">{line}</a>
+                          <a href={url} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80 underline break-all">{line}</a>
                         </div>
                       );
                     }

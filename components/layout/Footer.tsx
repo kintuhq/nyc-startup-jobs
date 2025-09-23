@@ -11,8 +11,8 @@ export default function Footer() {
               <Image
                 src="/logo.png"
                 alt="NYC Startup Jobs Logo"
-                width={32}
-                height={32}
+                width={38}
+                height={38}
                 className="h-8 w-8 mr-2"
                 loading="lazy"
               />
@@ -27,15 +27,15 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold text-foreground mb-3">For Analysts</h4>
+            <h4 className="font-semibold text-foreground mb-3">For Employees</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <a href="#" className="hover:text-primary transition-colors">
+                <a href="https://nycstartupjobs.com/" className="hover:text-primary transition-colors">
                   Browse Jobs
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-primary transition-colors">
+                <a href="/career-resources" className="hover:text-primary transition-colors">
                   Career Resources
                 </a>
               </li>
@@ -49,7 +49,7 @@ export default function Footer() {
 
           {/* For Schools */}
           <div>
-            <h4 className="font-semibold text-foreground mb-3">For Companies</h4>
+            <h4 className="font-semibold text-foreground mb-3">For Startups</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
                 <a href="/login" className="hover:text-primary transition-colors">

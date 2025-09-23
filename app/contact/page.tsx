@@ -250,7 +250,7 @@ export default function ContactPage() {
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-primary transition-colors">
+                  <a href="/career-resources" className="hover:text-primary transition-colors">
                     Career Resources
                   </a>
                 </li>

@@ -316,11 +316,17 @@ export default function HomePage() {
                         </Badge>
                       </div>
 
+                      <p className="text-sm text-muted-foreground">
+                        {job.company.name} in {job.location} is hiring a {job.type === "full-time" ? "full-time" : "part-time"} {job.title.toLowerCase()}.
+                      </p>
 
                       <Button
-                        className="w-full bg-primary hover:bg-primary/90 text-primary-foreground cursor-pointer"
+                        className="w-full cursor-pointer text-white"
+                        style={{ backgroundColor: '#14B8A6' }}
                         size="sm"
-                        onClick={() => router.push(`/jobs/${job.shortId}`)}
+                        onClick={() => window.open(`/jobs/${job.shortId}`, '_blank')}
+                        onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#0F9488'}
+                        onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#14B8A6'}
                       >
                         View Details
                       </Button>
