@@ -1,6 +1,18 @@
-"use client"
+import type { Metadata } from "next"
+import CareerResourcesComponent from "./CareerResourcesComponent"
 
-import { useRouter } from "next/navigation"
+export const metadata: Metadata = {
+  title: "Career Resources - NYC Startup Jobs",
+  description: "Career development resources, tips, and guides for professionals seeking opportunities in New York City's startup ecosystem.",
+  openGraph: {
+    title: "Career Resources - NYC Startup Jobs",
+    description: "Career development resources, tips, and guides for professionals seeking opportunities in New York City's startup ecosystem.",
+  },
+}
+
+export default function CareerResourcesPage() {
+  return <CareerResourcesComponent />
+}
 import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
 

@@ -1,6 +1,18 @@
-"use client"
+import type { Metadata } from "next"
+import DashboardComponent from "./DashboardComponent"
 
-import { useState, useEffect } from "react"
+export const metadata: Metadata = {
+  title: "Company Dashboard - NYC Startup Jobs",
+  description: "Manage your job postings, edit your company profile, and track applications on your NYC Startup Jobs dashboard.",
+  openGraph: {
+    title: "Company Dashboard - NYC Startup Jobs",
+    description: "Manage your job postings, edit your company profile, and track applications on your NYC Startup Jobs dashboard.",
+  },
+}
+
+export default function DashboardPage() {
+  return <DashboardComponent />
+}
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
