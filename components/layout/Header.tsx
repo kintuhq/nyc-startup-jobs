@@ -29,7 +29,10 @@ export default function Header() {
           </div>
           <Button
             onClick={() => router.push("/register")}
-            className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-base font-semibold bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg shadow-md hover:shadow-lg transition-all duration-300 px-6 py-3 h-11 cursor-pointer"
+            className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-base font-semibold text-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 px-6 py-3 h-11 cursor-pointer"
+            style={{ backgroundColor: '#14B8A6' }}
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#0F9488'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#14B8A6'}
           >
             Post a Job
           </Button>
