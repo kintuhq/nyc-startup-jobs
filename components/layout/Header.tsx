@@ -22,17 +22,16 @@ export default function Header() {
             />
             <div>
               <h1 className="text-2xl font-bold">
-                <span className="text-primary">NYC Startup Jobs</span>
+                <a href="/" className="text-primary hover:text-primary/90 transition-colors cursor-pointer">
+                  NYC Startup Jobs
+                </a>
               </h1>
               <p className="text-muted-foreground -mt-1 text-sm">Building NYC startups</p>
             </div>
           </div>
           <Button
             onClick={() => router.push("/register")}
-            className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-base font-semibold text-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 px-6 py-3 h-11 cursor-pointer"
-            style={{ backgroundColor: '#14B8A6' }}
-            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#0F9488'}
-            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#14B8A6'}
+            className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-base font-semibold bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg shadow-md hover:shadow-lg transition-all duration-300 px-6 py-3 h-11 cursor-pointer"
           >
             Post a Job
           </Button>

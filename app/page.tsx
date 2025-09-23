@@ -111,7 +111,7 @@ export default function HomePage() {
                 width: '100%',
                 maxWidth: '400px',
                 border: '3px solid transparent',
-                backgroundImage: 'linear-gradient(white, white), linear-gradient(45deg, #6b46a3, #4c1d95)',
+                backgroundImage: 'linear-gradient(white, white), linear-gradient(45deg, #14B8A6, #0F9488)',
                 backgroundOrigin: 'border-box',
                 backgroundClip: 'content-box, border-box',
                 display: 'flex',
@@ -144,7 +144,7 @@ export default function HomePage() {
                     style={{
                       width: '96px',
                       height: '100%',
-                      background: 'linear-gradient(45deg, #4c1d95, #6b46a3)',
+                      background: 'linear-gradient(45deg, #0F9488, #14B8A6)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -208,7 +208,7 @@ export default function HomePage() {
                     style={{
                       width: '96px',
                       height: '100%',
-                      background: 'linear-gradient(45deg, #4c1d95, #6b46a3)',
+                      background: 'linear-gradient(45deg, #0F9488, #14B8A6)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
