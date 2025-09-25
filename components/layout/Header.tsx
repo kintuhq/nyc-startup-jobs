@@ -23,7 +23,8 @@ export default function Header() {
             <div>
               <h1 className="text-2xl font-bold">
                 <a href="/" className="text-primary hover:text-primary/90 transition-colors cursor-pointer">
-                  NYC Startup Jobs
+                  <span className="hidden sm:inline">NYC Startup Jobs</span>
+                  <span className="sm:hidden">NYC Jobs</span>
                 </a>
               </h1>
               <p className="text-muted-foreground -mt-1 text-sm">Building NYC startups</p>
