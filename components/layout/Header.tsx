@@ -21,7 +21,7 @@ export default function Header() {
               priority
             />
             <div>
-              <h1 className="text-xl sm:text-2xl font-bold">
+              <h1 className="text-lg sm:text-2xl font-bold">
                 <a href="/" className="text-primary hover:text-primary/90 transition-colors cursor-pointer">
                   NYC Startup Jobs
                 </a>
