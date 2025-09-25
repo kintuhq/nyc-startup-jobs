@@ -3,13 +3,26 @@ import { db } from '@/lib/db'
 import { jobs, companies, newsletterSubscribers } from '@/lib/db/schema'
 import { requireAuth, requireVerifiedAuth } from '@/lib/auth'
 import { sendJobNotificationEmail } from '@/lib/email'
-import { eq, desc } from 'drizzle-orm'
+import { eq, desc, and } from 'drizzle-orm'
 import { z } from 'zod'
 import { generateShortId } from '@/lib/short-id'
+
+// Helper function to map location to borough
+function getBoroughFromLocation(location: string): string | null {
+  const locationMap: Record<string, string> = {
+    'Manhattan': 'manhattan',
+    'Brooklyn': 'brooklyn',
+    'Queens': 'queens',
+    'The Bronx': 'bronx',
+    'Staten Island': 'staten-island'
+  }
+  return locationMap[location] || null
+}
 
 const jobSchema = z.object({
   title: z.string().min(1),
   location: z.enum(['Manhattan', 'Brooklyn', 'Queens', 'The Bronx', 'Staten Island']),
+  borough: z.enum(['manhattan', 'brooklyn', 'queens', 'bronx', 'staten-island']).optional(),
   type: z.enum(['full-time', 'part-time', 'contractor', 'internship']),
   role: z.string().optional(),
   shortBio: z.string().min(1),
@@ -27,6 +40,24 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url)
     const limit = parseInt(searchParams.get('limit') || '20')
     const offset = parseInt(searchParams.get('offset') || '0')
+    const borough = searchParams.get('borough')
+    const role = searchParams.get('role')
+
+    // Build where conditions
+    let whereConditions = eq(jobs.published, true)
+
+    // Add filters
+    const conditions = [eq(jobs.published, true)]
+    if (borough) {
+      conditions.push(eq(jobs.borough, borough))
+    }
+    if (role) {
+      conditions.push(eq(jobs.role, role))
+    }
+
+    if (conditions.length > 1) {
+      whereConditions = and(...conditions)
+    }
 
     // Optimized query - only select what we need for the home page cards
     const allJobs = await db
@@ -35,6 +66,7 @@ export async function GET(request: NextRequest) {
         shortId: jobs.shortId,
         title: jobs.title,
         location: jobs.location,
+        borough: jobs.borough,
         type: jobs.type,
         role: jobs.role,
         createdAt: jobs.createdAt,
@@ -46,7 +78,7 @@ export async function GET(request: NextRequest) {
         },
       })
       .from(jobs)
-      .where(eq(jobs.published, true))
+      .where(whereConditions)
       .orderBy(desc(jobs.createdAt))
       .limit(limit)
       .offset(offset)
@@ -93,8 +125,12 @@ export async function POST(request: NextRequest) {
       throw new Error('Unable to generate unique short ID')
     }
 
+    // Auto-set borough based on location if not provided
+    const borough = jobData.borough || getBoroughFromLocation(jobData.location)
+
     const [job] = await db.insert(jobs).values({
       ...jobData,
+      borough,
       shortId,
       companyId: session.companyId,
     }).returning()

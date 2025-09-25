@@ -17,7 +17,7 @@ export default function Header() {
               alt="NYC Startup Jobs logo"
               width={72}
               height={72}
-              className="h-[72px] w-[72px] mr-2"
+              className="h-[60px] w-[60px] sm:h-[72px] sm:w-[72px] mr-2"
               priority
             />
             <div>
