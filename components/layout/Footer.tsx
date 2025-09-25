@@ -41,7 +41,7 @@ export default function Footer() {
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pt-8 border-t border-border items-start">
           {/* Brand Section */}
-          <div>
+          <div className="md:col-span-2">
             <div className="flex items-center mb-3">
               <Image
                 src="/logo.png"
@@ -56,7 +56,7 @@ export default function Footer() {
               </h3>
             </div>
             <p className="text-muted-foreground mb-4 max-w-xs">
-              Helping NYC's startup ecosystem thrive by connecting skilled professionals with the city's most promising startups.
+              Helping New York's startup ecosystem thrive by connecting skilled professionals with the city's most promising startups.
             </p>
           </div>
 
