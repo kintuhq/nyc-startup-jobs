@@ -55,7 +55,7 @@ export default function Footer() {
                 <span className="text-primary">NYC</span> <span className="text-foreground">Startup Jobs</span>
               </h3>
             </div>
-            <p className="text-muted-foreground mb-4 max-w-xs">
+            <p className="text-muted-foreground mb-4 max-w-sm">
               Helping New York's startup ecosystem thrive by connecting skilled professionals with the city's most promising startups.
             </p>
           </div>
