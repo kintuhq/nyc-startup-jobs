@@ -85,7 +85,7 @@ export default function AddJobComponent() {
           </p>
         </div>
 
-        <JobPostingForm onSubmit={handleJobSubmit} />
+        <JobPostingForm onSubmit={handleJobSubmit} onClose={() => {}} isModal={false} />
       </div>
     </div>
   )
