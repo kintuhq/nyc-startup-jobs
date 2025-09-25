@@ -267,7 +267,7 @@ export default function RoleBoroughPage({
       <section className="py-8 px-4">
         <div className="mx-auto" style={{ maxWidth: "1240px" }}>
           <div className="flex items-center justify-between mb-8">
-            <h3 className="text-2xl font-bold text-foreground">{roleDisplayName} Opportunities in {boroughDisplayName}</h3>
+            <h3 className="text-2xl font-bold text-foreground">{roleDisplayName} Jobs in {boroughDisplayName}</h3>
             <p className="text-muted-foreground">{jobs.length} positions available</p>
           </div>
 
@@ -369,7 +369,7 @@ export default function RoleBoroughPage({
 
           {!isLoading && jobs.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-muted-foreground text-lg">No {roleDisplayName} opportunities in {boroughDisplayName} yet.</p>
+              <p className="text-muted-foreground text-lg">No {roleDisplayName} jobs in {boroughDisplayName} yet.</p>
               <p className="text-muted-foreground">Subscribe above to get notified when new {roleDisplayName} positions in {boroughDisplayName} are posted!</p>
             </div>
           )}
