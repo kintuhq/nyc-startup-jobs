@@ -147,7 +147,7 @@ export default function Footer() {
         {/* Featured Job Categories */}
         <div className="mt-8 pt-8 border-t border-border">
           <h4 className="font-semibold text-foreground mb-4">Featured Job Categories</h4>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
             <a href="/software-engineer-jobs-new-york" className="text-sm text-muted-foreground hover:text-primary transition-colors">Software Engineer Jobs in New York</a>
             <a href="/mobile-engineer-jobs-new-york" className="text-sm text-muted-foreground hover:text-primary transition-colors">Mobile Engineer Jobs in New York</a>
             <a href="/devops-engineer-jobs-new-york" className="text-sm text-muted-foreground hover:text-primary transition-colors">DevOps Engineer Jobs in New York</a>
