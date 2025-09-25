@@ -100,7 +100,6 @@ export default function RolePage({ role, roleDisplayName, description, metaTitle
       <section className="py-16 px-4">
         <div className="mx-auto text-center" style={{ maxWidth: "1240px" }}>
           <div className="flex items-center justify-center mb-6">
-            <Briefcase className="w-8 h-8 text-primary mr-3" />
             <h1 className="text-5xl font-bold text-foreground text-balance">
               <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">{roleDisplayName}</span> Jobs in NYC
             </h1>

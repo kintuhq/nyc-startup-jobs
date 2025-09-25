@@ -39,7 +39,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-6 pt-8 border-t border-border items-start">
+        <div className="grid grid-cols-1 md:grid-cols-[2.5fr_1fr_1fr_1fr] gap-6 pt-8 border-t border-border items-start">
           {/* Brand Section */}
           <div>
             <div className="flex items-center mb-3">
