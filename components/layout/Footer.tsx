@@ -41,7 +41,7 @@ export default function Footer() {
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 pt-8 border-t border-border items-start">
           {/* Brand Section */}
-          <div>
+          <div className="md:col-span-2">
             <div className="flex items-center mb-3">
               <Image
                 src="/logo.png"
