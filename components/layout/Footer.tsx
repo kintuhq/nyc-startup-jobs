@@ -39,7 +39,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8 border-t border-border items-start">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pt-8 border-t border-border items-start">
           {/* Brand Section */}
           <div>
             <div className="flex items-center mb-3">
@@ -58,6 +58,38 @@ export default function Footer() {
             <p className="text-muted-foreground mb-4 max-w-xs">
               Helping NYC's startup ecosystem thrive by connecting skilled professionals with the city's most promising startups.
             </p>
+          </div>
+
+          {/* Jobs by Location */}
+          <div>
+            <h4 className="font-semibold text-foreground mb-3">Jobs by Location</h4>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li>
+                <a href="/manhattan-jobs-new-york" className="hover:text-primary transition-colors">
+                  Manhattan Tech Jobs
+                </a>
+              </li>
+              <li>
+                <a href="/brooklyn-jobs-new-york" className="hover:text-primary transition-colors">
+                  Brooklyn Tech Jobs
+                </a>
+              </li>
+              <li>
+                <a href="/queens-jobs-new-york" className="hover:text-primary transition-colors">
+                  Queens Tech Jobs
+                </a>
+              </li>
+              <li>
+                <a href="/bronx-jobs-new-york" className="hover:text-primary transition-colors">
+                  Bronx Tech Jobs
+                </a>
+              </li>
+              <li>
+                <a href="/staten-island-jobs-new-york" className="hover:text-primary transition-colors">
+                  Staten Island Tech Jobs
+                </a>
+              </li>
+            </ul>
           </div>
 
           {/* For Startups */}
