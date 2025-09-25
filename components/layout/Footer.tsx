@@ -39,7 +39,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8 border-t border-border items-start">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 pt-8 border-t border-border items-start">
           {/* Brand Section */}
           <div>
             <div className="flex items-center mb-3">
@@ -60,10 +60,10 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Jobs by Location & For Startups */}
+          {/* Jobs by Location */}
           <div>
             <h4 className="font-semibold text-foreground mb-3">Jobs by Location</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground mb-6">
+            <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
                 <a href="/manhattan-jobs-new-york" className="hover:text-primary transition-colors">
                   Manhattan Tech Jobs
@@ -90,7 +90,10 @@ export default function Footer() {
                 </a>
               </li>
             </ul>
+          </div>
 
+          {/* For Startups */}
+          <div>
             <h4 className="font-semibold text-foreground mb-3">For Startups</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
